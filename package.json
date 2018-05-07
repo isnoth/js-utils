@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/isnoth/js-utils#readme",
   "dependencies": {
-    "mongodb": "^3.0.7"
+    "mongodb": "^2.2.33"
   }
 }
