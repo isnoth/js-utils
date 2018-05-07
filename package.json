@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/isnoth/js-utils/issues"
   },
-  "homepage": "https://github.com/isnoth/js-utils#readme"
+  "homepage": "https://github.com/isnoth/js-utils#readme",
+  "dependencies": {
+    "mongodb": "^3.0.7"
+  }
 }
