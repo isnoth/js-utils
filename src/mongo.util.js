@@ -64,7 +64,7 @@ class DbHandler{
     this.url = url
     this.db = null;
     //this.init()
-    setTimeout(this.init.bind(this), 5000)
+    //setTimeout(this.init.bind(this), 5000)
   }
 
   init(){
