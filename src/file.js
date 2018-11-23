@@ -21,7 +21,25 @@ const writeFile = (path, data, encoding='utf-8')=>{
   })
 }
 
+const fileRemove = (name) => {
+    return new Promise((res, rej)=>{
+        fs.unlink(name, (err) => {
+            err? rej(err) : res()
+        });
+    })
+}
+
+const fileExists = (name) => {
+    return new Promise((res, rej) => {
+        fs.exists(name, (exists)=>{
+            exists? res() : rej()
+        })
+    })
+}
+
 module.exports = {
   readFile,
-  writeFile
+  writeFile,
+  fileRemove,
+  fileExists
 }
