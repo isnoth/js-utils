@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/isnoth/js-utils#readme",
   "dependencies": {
+    "child-process-promise": "^2.2.1",
     "mongodb": "^2.2.33"
   }
 }
