@@ -1,24 +1,47 @@
 {
-  "name": "js-utils-new",
-  "version": "1.0.9",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
+  "_from": "git+ssh://git@github.com/isnoth/js-utils.git",
+  "_id": "js-utils-new@1.0.9",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/js-utils-new",
+  "_phantomChildren": {},
+  "_requested": {
     "type": "git",
-    "url": "git+https://github.com/isnoth/js-utils.git"
+    "raw": "git+ssh://git@github.com/isnoth/js-utils",
+    "rawSpec": "git+ssh://git@github.com/isnoth/js-utils",
+    "saveSpec": "git+ssh://git@github.com/isnoth/js-utils.git",
+    "fetchSpec": "ssh://git@github.com/isnoth/js-utils.git",
+    "gitCommittish": null
   },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+ssh://git@github.com/isnoth/js-utils.git#b9fd518454fd681e3cb7ac0602a325d167e22fd2",
+  "_spec": "git+ssh://git@github.com/isnoth/js-utils",
+  "_where": "/home/fuzz/Documents/taobao-project",
   "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/isnoth/js-utils/issues"
   },
-  "homepage": "https://github.com/isnoth/js-utils#readme",
+  "bundleDependencies": false,
   "dependencies": {
     "child-process-promise": "^2.2.1",
     "mongodb": "^2.2.33",
     "winston": "^3.1.0"
-  }
+  },
+  "deprecated": false,
+  "description": "",
+  "homepage": "https://github.com/isnoth/js-utils#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "name": "js-utils-new",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isnoth/js-utils.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.9"
 }
