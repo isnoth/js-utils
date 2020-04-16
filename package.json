@@ -41,7 +41,10 @@
     "url": "git+https://github.com/isnoth/js-utils.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha src/*.spec.js"
   },
-  "version": "1.0.9"
+  "version": "1.0.9",
+  "devDependencies": {
+    "mocha": "^7.1.1"
+  }
 }
