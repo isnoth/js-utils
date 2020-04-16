@@ -1,5 +1,4 @@
-
-function promisesReduce(promises){
+export function promisesReduce(promises){
     const final  = []
 
     return promises.reduce((pre, cur)=>{
@@ -10,6 +9,3 @@ function promisesReduce(promises){
     .then(()=>final)
 }
 
-module.exports = {
-    promisesReduce
-}
