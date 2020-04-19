@@ -43,9 +43,9 @@
   },
   "scripts": {
     "test": "mocha --require @babel/register  src/*.spec.js",
-    "build": "rollup src/index.browser.js --file bundle.js --format umd --name \"jsUtils\""
+    "build": "rollup src/index.browser.js --file dist/index.umd.js --format umd --name \"jsUtils\""
   },
-  "version": "1.0.10",
+  "version": "1.0.11",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
