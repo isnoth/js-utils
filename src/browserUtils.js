@@ -1,3 +1,4 @@
+import { timeoutAsync }  from './common.js'
 
 export function downFile(content, filename) {
 	// 创建隐藏的可下载链接
@@ -41,3 +42,40 @@ export function waitUntilElementExist(selectors, xpaths=[], timeout=10000){
 		}, 1000)
 	})
 }
+
+export function scrollAndExecute({
+    scrollContainer,
+    scrollHeight=1000,
+    scrollInterval=2000,
+    fn,
+    scrollTimeout=10000,
+    scrollStopFn=null,
+}) {
+    let interval;
+    const callFnEveryIntervalAsync = () => {
+        return new Promise((resolve, reject) => {
+            interval = setInterval(() => {
+                fn()
+                scrollContainer.scroll(0, scrollContainer.scrollTop+scrollHeight)
+                if(scrollStopFn && scrollStopFn()){
+                    resolve()
+                }
+            }, scrollInterval)
+        })  
+    } 
+
+    return Promise.race([callFnEveryIntervalAsync(), timeoutAsync(scrollTimeout)])
+        .then(() => {
+            clearInterval(interval)
+        })
+}
+
+/*
+usage :
+scrollAndExecute( {scrollContainer, fn: getAndConcatData, scrollHeight: 200, scrollTimeout:30000, scrollInterval:500})
+    .then(() => {
+        console.log(lData)
+    })
+    */
+
+

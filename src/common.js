@@ -6,3 +6,4 @@ export function uniqueArray (currentData, newData, comparator) {
     )]
 }
 
+export const timeoutAsync = (timeout) => (new Promise((res) => setTimeout(res, timeout)))
