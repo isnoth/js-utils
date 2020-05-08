@@ -3,10 +3,11 @@ export default [{
     output: [{
         file: 'dist/index.umd.js',
         format: 'umd',
-        name: 'jsUtils',
+        name: 'window',
     }, {
         file: 'dist/index.iffe.js',
         format: 'iife',
+        moduleName: 'window'
     }, {
         file: 'dist/index.amd.js',
         format: 'amd',
