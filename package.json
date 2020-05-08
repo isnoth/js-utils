@@ -45,7 +45,7 @@
     "test": "mocha --require @babel/register  src/*.spec.js",
     "build": "rollup -c rollup.config.js"
   },
-  "version": "1.0.23",
+  "version": "1.0.24",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",

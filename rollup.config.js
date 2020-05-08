@@ -7,8 +7,8 @@ export default [{
     }, {
         file: 'dist/index.iife.js',
         format: 'iife',
-        moduleName: 'window',
         name: 'jsUtils',
+        extend: true,
     }, {
         file: 'dist/index.amd.js',
         format: 'amd',
