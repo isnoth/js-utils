@@ -2,7 +2,7 @@ const fs =require('fs')
 const util = require('util')
 const accessAsync = util.promisify(fs.access)
 
-const readFile = (filename, encoding='utf-8')=>{
+export const readFile = (filename, encoding='utf-8')=>{
   return new Promise((resolve, reject)=>{
       console.info('readFile:', filename)
       fs.readFile(filename, encoding, (err, data)=>{
@@ -16,7 +16,7 @@ const readFile = (filename, encoding='utf-8')=>{
   })
 }
 
-const writeFile = (path, data, encoding='utf-8')=>{
+export const writeFile = (path, data, encoding='utf-8')=>{
   return new Promise((resolve, reject)=>{
     fs.writeFile(path, data, encoding, (err, result)=>{
       if(err)
@@ -28,7 +28,7 @@ const writeFile = (path, data, encoding='utf-8')=>{
   })
 }
 
-const fileRemove = (name) => {
+export const fileRemove = (name) => {
     return new Promise((res, rej)=>{
         fs.unlink(name, (err) => {
             err? rej(err) : res()
@@ -36,13 +36,13 @@ const fileRemove = (name) => {
     })
 }
 
-const fileExists = function (name) {
+export const fileExists = function (name) {
     return accessAsync(name)
     .then(() => true)
     .catch(() => false)
 }
 
-const listDir = (path) => {
+export const listDir = (path) => {
     return new Promise((res, rej) => {
         fs.readdir(path, (error, result) => {
             console.log(path, result)
@@ -51,7 +51,7 @@ const listDir = (path) => {
     })
 }
 
-const rename = (oldPath, newPath, renameFileIfExist=false)  => {
+export const rename = (oldPath, newPath, renameFileIfExist=false)  => {
     return new Promise((res, rej) => {
         fileExists(newPath)
         .then((exist) => {
@@ -78,7 +78,7 @@ const rename = (oldPath, newPath, renameFileIfExist=false)  => {
     })
 }
 
-const mkDir = (path) => {
+export const mkDir = (path) => {
     return new Promise((res, rej) => {
         fileExists(path)
         .then((exist) => {
@@ -98,15 +98,4 @@ const mkDir = (path) => {
         })
         .catch(err => rej(err))
     })
-}
-
-
-module.exports = {
-  readFile,
-  writeFile,
-  fileRemove,
-  fileExists,
-  listDir,
-  rename,
-  mkDir
 }
