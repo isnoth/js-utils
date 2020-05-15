@@ -59,7 +59,7 @@ function deleteOne(db, collection, params){
 
 
 
-class DbHandler{
+export class DbHandler {
   constructor(url){
     this.url = url
     this.db = null;
@@ -106,8 +106,4 @@ class DbHandler{
       }
     })
   }
-}
-
-module.exports = {
-  DbHandler
 }
