@@ -12,7 +12,7 @@ function createPromise(key, timeout){
 describe('promise.util', ()=>{
     var p1, p2;
 
-    before(()=>{
+    beforeAll(()=>{
         p1 = createPromise('p1', 200)
         p2 = createPromise('p2', 100)
     })
