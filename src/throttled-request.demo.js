@@ -1,6 +1,10 @@
 const {getThrotedRequest} = require('./throttled-request')
 
-const req = getThrotedRequest(2, 5001)
+const startFn = (options) => {
+    console.log('start', options)
+}
+
+const req = getThrotedRequest(2, 5001, startFn)
 const options = {
     method: 'GET',
     url: 'https://www.baidu.com'

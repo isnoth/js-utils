@@ -47,7 +47,7 @@
     "test": "jest",
     "build": "rollup -c rollup.config.js"
   },
-  "version": "1.0.28",
+  "version": "1.0.29",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
