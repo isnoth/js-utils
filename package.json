@@ -29,8 +29,12 @@
     "@babel/runtime": "^7.9.2",
     "axios": "^0.19.2",
     "child-process-promise": "^2.2.1",
+    "got": "^11.3.0",
+    "https-proxy-agent": "^5.0.0",
     "mongodb": "^2.2.33",
     "p-throttle": "^3.1.0",
+    "tunnel": "0.0.6",
+    "typescript": "^3.9.5",
     "winston": "^3.1.0"
   },
   "deprecated": false,
@@ -47,7 +51,7 @@
     "test": "jest",
     "build": "rollup -c rollup.config.js"
   },
-  "version": "1.0.29",
+  "version": "1.1.0",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
@@ -55,9 +59,14 @@
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/register": "^7.9.0",
+    "@rollup/plugin-typescript": "^5.0.0",
     "chai": "^4.2.0",
+    "dts-gen": "^0.6.0",
     "jest": "^26.0.1",
     "mocha": "^7.1.1",
-    "rollup": "^2.6.1"
+    "rollup": "^2.6.1",
+    "rollup-plugin-dts": "^1.4.7",
+    "rollup-plugin-typescript2": "^0.27.1",
+    "tslib": "^2.0.0"
   }
 }
