@@ -7,6 +7,7 @@ export function uniqueArray (currentData, newData, comparator) {
 }
 
 export const timeoutAsync = (timeout) => (new Promise((res) => setTimeout(res, timeout)))
+export const timeoutAsyncRej = (timeout) => (new Promise((res, rej) => setTimeout(() => rej(new Error(`timeoutAsyncRej timeout:${timeout}`)), timeout)))
 
 export function uuidv4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
