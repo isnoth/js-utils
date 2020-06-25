@@ -1,7 +1,6 @@
-
 var exec = require('child-process-promise').exec;
 
-var wrappedExec = (cmd)=>{
+export const wrappedExec = (cmd)=>{
   return exec(cmd)
   .then(result=>{
     console.log(result.stdout)
@@ -9,8 +8,4 @@ var wrappedExec = (cmd)=>{
   .catch(err=>{
     console.error(err.stderr)
   })
-}
-
-module.exports = {
-    wrappedExec
 }

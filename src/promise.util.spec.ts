@@ -1,4 +1,4 @@
-const {promisesReduce} = require('./promise.util')
+import { promisesReduce } from './promise.util'
 
 
 function createPromise(key, timeout){

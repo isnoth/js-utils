@@ -37,6 +37,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 class Logger{
+    module: any;
     constructor(module){
         this.module = module
     }
@@ -62,8 +63,7 @@ class Logger{
     }
 }
 
-function newLogger(name){
+export function newLogger(name){
     return new Logger(name)
 }
 
-module.exports = newLogger

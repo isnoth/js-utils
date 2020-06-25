@@ -49,9 +49,10 @@
   },
   "scripts": {
     "test": "jest",
+    "generate-dts": "tsc src/index.ts -d --declarationDir dist/types",
     "build": "rollup -c rollup.config.js"
   },
-  "version": "1.1.1",
+  "version": "1.1.2",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
@@ -60,6 +61,7 @@
     "@babel/preset-env": "^7.9.5",
     "@babel/register": "^7.9.0",
     "@rollup/plugin-typescript": "^5.0.0",
+    "@types/jest": "^26.0.3",
     "chai": "^4.2.0",
     "dts-gen": "^0.6.0",
     "jest": "^26.0.1",
@@ -67,6 +69,10 @@
     "rollup": "^2.6.1",
     "rollup-plugin-dts": "^1.4.7",
     "rollup-plugin-typescript2": "^0.27.1",
+    "ts-jest": "^26.1.1",
     "tslib": "^2.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

@@ -1,12 +1,11 @@
 import { uniqueArray, SimpleEventHandler } from './common'
-import chai from 'chai'
 
 it('uniqueArray', () => {
     const a = [{a:1}, {a:2}, {a:3}]
     const b = [{a:2}, {a:3}, {a:4}]
     const expected = [{a: 1}, {a:2}, {a:3}, {a:4}]
     const result = uniqueArray(a,b, (a,b) =>a.a === b.a )
-    chai.assert.equal(JSON.stringify(result), JSON.stringify(expected))
+    expect(JSON.stringify(result)).toBe(JSON.stringify(expected));
 })
 
 it('#SimpleEventHandler', () => {
