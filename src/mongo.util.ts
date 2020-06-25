@@ -30,7 +30,7 @@ function add(db, collection, data){
 }
 
 function find(db, collection, query){
-  return new Promise((resolve, reject)=>{
+  return new Promise<any[]>((resolve, reject)=>{
     const c= db.collection(collection)
     c.find(query).toArray((err, result)=>{
       if (err){
@@ -60,6 +60,8 @@ function deleteOne(db, collection, params){
 
 
 export class DbHandler {
+    db: any;
+    url: any;
   constructor(url){
     this.url = url
     this.db = null;

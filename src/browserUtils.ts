@@ -1,4 +1,4 @@
-import { timeoutAsync }  from './common.js'
+import { timeoutAsync }  from './common'
 
 export function downFile(content, filename) {
 	// 创建隐藏的可下载链接
@@ -88,6 +88,7 @@ export function loadScript(url, callback)
 
    // then bind the event to the callback function 
    // there are several events for cross browser compatibility
+   // @ts-ignore
    script.onreadystatechange = callback;
    script.onload = callback;
 

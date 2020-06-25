@@ -11,6 +11,6 @@ export default {
 }
 */
 
-export * from './common.js'
-export * from './promise.util.js'
-export * from './browserUtils.js'
+export * from './common'
+export * from './promise.util'
+export * from './browserUtils'

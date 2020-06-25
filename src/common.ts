@@ -19,6 +19,7 @@ export function uuidv4() {
 console.log(uuidv4());
 
 export class SimpleEventHandler{
+    handler: any;
     constructor() {
         this.handler = {}
     }
