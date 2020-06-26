@@ -24,7 +24,7 @@ const getProxyOptions = (options: iOptions ) => ({
 export function getThrotedRequest(numbers: number, milisecond: number, startFn: Function = _=>{ }) {
     const requestfunction = (options: iOptions) => {
         const newOptions = options.proxy && getProxyOptions(options) || {}
-        startFn(newOptions)
+        startFn(options, newOptions)
 
         return new Promise((res, rej) => {
             timeoutAsync(options.timeout)

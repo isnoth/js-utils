@@ -35,10 +35,6 @@ export default [
             {
                 file: 'dist/index.cjs.js',
                 format: 'cjs',
-            },
-            {
-                file: 'dist/index.es.js',
-                format: 'es',
             }
         ],
         plugins: [
@@ -50,7 +46,7 @@ export default [
     },
     {
         input: "dist/index.d.ts",
-        output: [{ file: "dist/index.es.d.ts", format: "es" }],
+        output: [{ file: "dist/index.cjs.d.ts", format: "es" }],
         plugins: [dts()],
     }
 ];
