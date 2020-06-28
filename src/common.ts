@@ -16,7 +16,9 @@ export function uuidv4() {
     });
 }
 
-console.log(uuidv4());
+export function get10BitUid() {
+    return '_' + Math.random().toString(36).substr(2, 9);
+}
 
 export class SimpleEventHandler{
     handler: any;
