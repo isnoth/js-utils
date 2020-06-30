@@ -1,15 +1,17 @@
 const winston = require('winston')
-
-const { createLogger, format, transports } = require('winston');
+import { createLogger, format, transports } from 'winston';
 const { combine, timestamp, label, printf } = format;
 const myFormat = printf(info => {
-    return `[${info.module.padEnd(15, ' ')}] ${info.level}:   ${info.message}`;
+    return `${info.timestamp} [${info.module.padEnd(15, ' ')}] ${info.level}:   ${info.message}`;
 });
 
 const logger = winston.createLogger({
   level: 'debug',
   //format: winston.format.json(),
-  format: myFormat,
+  format: combine(
+      timestamp(),
+      myFormat
+  ),
   transports: [
     //
     // - Write to all logs with level `info` and below to `combined.log` 
