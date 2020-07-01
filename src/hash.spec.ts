@@ -1,5 +1,5 @@
 import { createHash } from './hash'
 
 it('md5', ()=>{
-    createHash('www.baidu.com')
+    console.log(createHash('www.baidu.com-falskfejalksejf alsef kasejfasl;fe '))
 })
