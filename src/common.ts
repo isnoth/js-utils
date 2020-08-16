@@ -6,6 +6,12 @@ export function uniqueArray (currentData, newData, comparator) {
     )]
 }
 
+export function uniqObjArrByKey (currentData, key) {
+    return currentData.reduce((acc, cur) => {
+        return !!acc.find(i => i[key]===cur[key]) ? acc : [...acc, cur]
+    }, [])
+}
+
 export const timeoutAsync = (timeout) => (new Promise((res) => setTimeout(res, timeout)))
 export const timeoutAsyncRej = (timeout) => (new Promise((res, rej) => setTimeout(() => rej(new Error(`timeoutAsyncRej timeout:${timeout}`)), timeout)))
 

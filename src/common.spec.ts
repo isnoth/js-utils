@@ -1,10 +1,17 @@
-import { uniqueArray, SimpleEventHandler } from './common'
+import { uniqueArray, uniqObjArrByKey, SimpleEventHandler } from './common'
 
 it('uniqueArray', () => {
     const a = [{a:1}, {a:2}, {a:3}]
     const b = [{a:2}, {a:3}, {a:4}]
     const expected = [{a: 1}, {a:2}, {a:3}, {a:4}]
     const result = uniqueArray(a,b, (a,b) =>a.a === b.a )
+    expect(JSON.stringify(result)).toBe(JSON.stringify(expected));
+})
+
+it('uniqByKey', () => {
+    const a = [{a:1}, {a:2}, {a:1, b:1}]
+    const expected = [{a:1}, {a:2}]
+    const result = uniqObjArrByKey(a, 'a')
     expect(JSON.stringify(result)).toBe(JSON.stringify(expected));
 })
 
