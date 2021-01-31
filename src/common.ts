@@ -48,3 +48,51 @@ export class SimpleEventHandler{
         evtHandlers.forEach(handler => handler.fn(value))
     }
 }
+
+export function extractJSON(str) {
+    const firstOpen = str.indexOf('{')
+    const sliced = str.slice(firstOpen)
+    // console.log(sliced)
+    let i = 0
+    let j = 0
+
+    for (let s of sliced) {
+        j ++;
+        if (s === '{' ) {
+            i ++;
+        } else if (s === '}') {
+            i --;
+        }
+
+        if (i === 0) {
+            const os = sliced.slice(0, j)
+            return JSON.parse(os)
+        }
+    }
+}
+
+function extractJSONV2(str: string): any {
+    var firstOpen = -1, firstClose, candidate;
+    firstOpen = str.indexOf('{', firstOpen + 1);
+    do {
+        firstClose = str.lastIndexOf('}');
+        // console.log('firstOpen: ' + firstOpen, 'firstClose: ' + firstClose);
+        if(firstClose <= firstOpen) {
+            return null;
+        }
+        do {
+            candidate = str.substring(firstOpen, firstClose + 1);
+            // console.log('candidate: ' + candidate);
+            try {
+                var res = JSON.parse(candidate);
+                // console.log('...found');
+                return [res, firstOpen, firstClose + 1];
+            }
+            catch(e) {
+                // console.log('...failed');
+            }
+            firstClose = str.substr(0, firstClose).lastIndexOf('}');
+        } while(firstClose > firstOpen);
+        firstOpen = str.indexOf('{', firstOpen + 1);
+    } while(firstOpen != -1);
+}
