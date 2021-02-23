@@ -71,7 +71,7 @@ export function extractJSON(str) {
     }
 }
 
-function extractJSONV2(str: string): any {
+export function extractJSONV2(str: string): any {
     var firstOpen = -1, firstClose, candidate;
     firstOpen = str.indexOf('{', firstOpen + 1);
     do {
