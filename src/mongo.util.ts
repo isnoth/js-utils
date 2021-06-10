@@ -1,19 +1,32 @@
-/* v1.2
+/* v1.3
  * add db handler
+ * mongo db js driver move to 3
  *
  */
-var MongoClient = require('mongodb').MongoClient
 
-function connectToMongo(url){
-  return new Promise((resolve, reject)=>{
-    MongoClient.connect(url, {reconnectInterval: 1000}, (err,db)=>{
-      if (err){
-        reject(err)
-      }else{
-        resolve(db)
-      }
+const { MongoClient } = require("mongodb");
+
+
+async function connectToMongo(url){
+    const client = new MongoClient(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
     });
-  })
+
+    try {
+        // Connect the client to the server
+        await client.connect();
+        // Establish and verify connection
+        // await client.db("admin").command({ ping: 1 });
+        console.log("Connected successfully to server");
+        return client.db()
+
+    } catch(e){
+        console.error("Connected to server failed", e)
+    } finally {
+        // Ensures that the client will close when you finish/error
+        // await client.close();
+    }
 }
 
 function add(db, collection, data){
