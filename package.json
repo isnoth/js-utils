@@ -27,7 +27,7 @@
   "bundleDependencies": false,
   "dependencies": {
     "@babel/runtime": "^7.9.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "child-process-promise": "^2.2.1",
     "got": "^11.3.0",
     "https-proxy-agent": "^5.0.0",
