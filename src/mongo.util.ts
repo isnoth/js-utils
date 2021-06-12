@@ -19,7 +19,7 @@ async function connectToMongo(url){
         // Establish and verify connection
         // await client.db("admin").command({ ping: 1 });
         console.log("Connected successfully to server");
-        return client.db()
+        return client // if dbName is null return default db
 
     } catch(e){
         console.error("Connected to server failed", e)
@@ -70,55 +70,72 @@ function deleteOne(db, collection, params){
 }
 
 
+export class Db {
+    db: any;
 
+    constructor(client, dbName) {
+        this.db = client.db(dbName)
+    }
+
+    add(collection, data){
+        return add(this.db, collection, data)
+    }
+
+    find(collection, query={}){
+        return find(this.db, collection, query)
+    }
+
+    findOne(collection, query={}){
+        return findOne(this.db, collection, query)
+    }
+
+    update(collection, query, update ){
+        return findOneAndUpdate(this.db, collection, query, update )
+    }
+
+    deleteOne(collection, query){
+        return  deleteOne(this.db, collection, query)
+    }
+
+    exist( collection, query){
+        return find(this.db, collection, query)
+        .then(result=>{
+            if(!!result.length){
+                return Promise.resolve(true)
+            }else{
+                return Promise.resolve(false)
+            }
+        })
+    }
+}
 
 export class DbHandler {
-    db: any;
     url: any;
+    client: any;
+    dbs: any;
+
   constructor(url){
     this.url = url
-    this.db = null;
+    this.client = null
+    this.dbs = {}
     //this.init()
     //setTimeout(this.init.bind(this), 5000)
   }
 
-  init(){
+  init(dbName){
     return connectToMongo(this.url)
-    .then((db)=>{
-      this.db = db
-      console.log('db init')
+    .then((client)=>{
+      this.client = client
+      // this.db = db
+      console.log('connection innit')
       return Promise.resolve()
     })
   }
 
-  add(collection, data){
-    return add(this.db, collection, data)
-  }
-
-  find(collection, query={}){
-    return find(this.db, collection, query)
-  }
-
-  findOne(collection, query={}){
-    return findOne(this.db, collection, query)
-  }
-
-  update(collection, query, update ){
-   return findOneAndUpdate(this.db, collection, query, update )
-  }
-
-  deleteOne(collection, query){
-    return  deleteOne(this.db, collection, query)
-  }
-
-  exist( collection, query){
-    return find(this.db, collection, query)
-    .then(result=>{
-      if(!!result.length){
-        return Promise.resolve(true)
-      }else{
-        return Promise.resolve(false)
+  getDb(dbName) {
+      if (!this.dbs[dbName]) {
+          this.dbs[dbName] = new Db(this.client, dbName)
       }
-    })
+      return this.dbs[dbName]
   }
 }
