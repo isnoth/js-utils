@@ -122,7 +122,7 @@ export class DbHandler {
     //setTimeout(this.init.bind(this), 5000)
   }
 
-  init(dbName){
+  init(){
     return connectToMongo(this.url)
     .then((client)=>{
       this.client = client
