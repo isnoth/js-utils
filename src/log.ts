@@ -44,23 +44,28 @@ class Logger{
         this.module = module
     }
 
-    info(message) {
+    info(...args) {
+        const message = args.map(i => JSON.stringify(i)).join(' ')
         logger.info({module: this.module, message})
     }
 
-    debug (message) {
+    debug (...args) {
+        const message = args.map(i => JSON.stringify(i)).join(' ')
         logger.debug({module: this.module, message})
     }
 
-    error (message) {
+    error (...args) {
+        const message = args.map(i => JSON.stringify(i)).join(' ')
         logger.error({module: this.module, message})
     }
 
-    warn (message) {
+    warn (...args) {
+        const message = args.map(i => JSON.stringify(i)).join(' ')
         logger.warn({module: this.module, message})
     }
 
-    log (message) {
+    log (...args) {
+        const message = args.map(i => JSON.stringify(i)).join(' ')
         logger.warn({module: this.module, message})
     }
 }
