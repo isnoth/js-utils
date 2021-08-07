@@ -96,3 +96,14 @@ export function loadScript(url, callback)
    head.appendChild(script);
 }
 
+export function openNewTab(url: String)  {
+    const win = window.open(url,'_blank');
+    if(win) {
+        window.focus();
+    }
+    else{
+        setTimeout( () => {
+            if(win) win.focus()
+        }, 100 );
+    }
+}
