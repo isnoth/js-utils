@@ -1,9 +1,19 @@
 const winston = require('winston')
+const fs = require('fs')
+const path = require('path')
+
 import { createLogger, format, transports } from 'winston';
+
 const { combine, timestamp, label, printf } = format;
 const myFormat = printf(info => {
     return `${info.timestamp} [${info.module.padEnd(15, ' ')}] ${info.level}:   ${info.message}`;
 });
+
+const logDir = 'logs'
+if ( !fs.existsSync( logDir ) ) {
+    // Create the directory if it does not exist
+    fs.mkdirSync( logDir );
+}
 
 const logger = winston.createLogger({
   level: 'debug',
@@ -17,8 +27,8 @@ const logger = winston.createLogger({
     // - Write to all logs with level `info` and below to `combined.log` 
     // - Write all logs error (and below) to `error.log`.
     //
-    new winston.transports.File({ filename: 'error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'combined.log' })
+    new winston.transports.File({ filename: path.join(logDir, '/error.log'), level: 'error' }),
+    new winston.transports.File({ filename: path.join(logDir, '/combined.log')})
   ]
 });
 
