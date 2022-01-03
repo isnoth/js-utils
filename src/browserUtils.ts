@@ -36,9 +36,11 @@ export function waitUntilElementExist(selectors, xpaths=[], timeout=10000){
 			const searchEls = selectors.map(selector => document.querySelector(selector))
 			const xpathSearchEls = xpaths.map(xpath => document.evaluate(xpath, document).iterateNext())
 			const findEl = [...searchEls, ...xpathSearchEls].find(i=> i!== null)
-			clearTimeout(timeoutTimer)
-			timeoutTimer = null
-			findEl && resolve(findEl)
+            if (findEl) {
+                clearTimeout(timeoutTimer)
+                timeoutTimer = null
+                resolve(findEl)
+            }
 		}, 1000)
 	})
 }
