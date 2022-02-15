@@ -14,3 +14,4 @@ export default {
 export * from './common'
 export * from './promise.util'
 export * from './browserUtils'
+export * from './chrome-extension-utils'
