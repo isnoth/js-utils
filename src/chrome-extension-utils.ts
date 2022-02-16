@@ -1,38 +1,59 @@
+//
+// check https://stackoverflow.com/questions/3955803/chrome-extension-get-page-variables-in-content-script
+//
+export class ExtractPageVariable {
+    _variableName: any;
+    _handShake: any;
+    _data: any;
 
-export function nativeExecuteScript(c){
-    var h = document.createElement('script');
-    h.src = `data:text/javascript;base64,${btoa(c)}`
-    document.head.appendChild(h);
+  constructor(variableName) {
+    this._variableName = variableName;
+    this._handShake = this._generateHandshake();
+    this._inject();
+    this._data = this._listen();
+  }
+
+  //@ts-ignore
+  get data() {
+    return this._data;
+  }
+
+  // Private
+
+  _generateHandshake() {
+    const array = new Uint32Array(5);
+    return window.crypto.getRandomValues(array).toString();
+  }
+
+  _inject() {
+    function propagateVariable(handShake, variableName) {
+      const message = { handShake };
+      message[variableName] = window[variableName];
+      window.postMessage(message, "*");
+    }
+
+    const script = `( ${propagateVariable.toString()} )('${this._handShake}', '${this._variableName}');`
+    const scriptTag = document.createElement('script');
+    const scriptBody = document.createTextNode(script);
+
+    scriptTag.id = 'chromeExtensionDataPropagator';
+    scriptTag.appendChild(scriptBody);
+    document.body.append(scriptTag);
+  }
+
+  _listen() {
+    return new Promise(resolve => {
+      window.addEventListener("message", ({data}) => {
+        // We only accept messages from ourselves
+        if (data.handShake != this._handShake) return;
+        resolve(data);
+      }, false);
+    })
+  }
 }
 
-// input : variable
-export function getNativeVariable (varibale){
-    return new Promise((res, rej) => {
-
-        nativeExecuteScript(`
-            var data = { type: "FROM_PAGE", value: ${varibale}};
-            window.postMessage(data, "*");
-        `)
-
-        function listener (event) {
-            // We only accept messages from ourselves
-            if (event.source != window)
-                return;
-
-            if (event.data.type && (event.data.type == "FROM_PAGE")) {
-                window.removeEventListener("message", listener)
-                // console.log("Content script received message: ", event.data.value);
-                res( event.data.value)
-            }
-        }
-
-        window.addEventListener("message", listener)
-    });
-  
-}
-
-// todo: input function
-// todo: input promise
-
-// getNativeVariable(`window.__PRELOADED_STATE__`)
-// .then(console.log)
+// const windowData = new ExtractPageVariable('__PRELOADED_STATE__').data;
+// windowData.then(console.log);
+// windowData.then(data => {
+//    // Do work here
+// });
