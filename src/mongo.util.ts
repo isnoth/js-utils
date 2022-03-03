@@ -18,11 +18,11 @@ async function connectToMongo(url){
         await client.connect();
         // Establish and verify connection
         // await client.db("admin").command({ ping: 1 });
-        console.log("Connected successfully to server");
+        console.log(`Connected successfully to server url: ${url}`);
         return client // if dbName is null return default db
 
     } catch(e){
-        console.error("Connected to server failed", e)
+        console.error(`Connected to server failed url: ${url}`, e)
     } finally {
         // Ensures that the client will close when you finish/error
         // await client.close();
@@ -127,7 +127,6 @@ export class DbHandler {
     .then((client)=>{
       this.client = client
       // this.db = db
-      console.log('connection innit')
       return Promise.resolve()
     })
   }
