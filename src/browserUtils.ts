@@ -1,4 +1,4 @@
-import { timeoutAsync }  from './common'
+import { timeoutAsync, uid }  from './common'
 
 export function downFile(content, filename) {
 	// 创建隐藏的可下载链接
@@ -116,4 +116,15 @@ function utf8_to_b64( str ) {
 
 function b64_to_utf8( str ) {
     return decodeURIComponent(escape(window.atob( str )));
+}
+
+export function getUidFromLocalStorage() {
+    const id = window.localStorage.getItem('jsuuid')
+    if (id) {
+        return id
+    } else {
+       const newUid = uid()
+       window.localStorage.setItem('jsuuid', newUid)
+       return newUid
+    }
 }
