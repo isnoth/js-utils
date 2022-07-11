@@ -128,3 +128,21 @@ export function getUidFromLocalStorage() {
        return newUid
     }
 }
+
+export function getCanvas({w=121, h=14, ratio=1, canvasEl, text, x, y, fillStyle}) {
+    // const ratio = 2
+    // console.log(this.canvasRef.current)
+    canvasEl.width = w * ratio; // 实际渲染像素
+    canvasEl.height = h * ratio; // 实际渲染像素
+    canvasEl.style.width = `${w}px`; // 控制显示大小
+    canvasEl.style.height = `${h}px`; // 控制显示大小
+    canvasEl.getContext('2d').setTransform(ratio, 0, 0, ratio, 0, 0);
+
+    const context = canvasEl.getContext("2d");
+    context.font = `13px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`
+    context.fillStyle = fillStyle
+    context.fillText(text, x || 0, y || 14);
+
+    // return canvas;
+    return canvasEl.toDataURL('image/png', 1)
+}
