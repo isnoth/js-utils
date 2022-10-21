@@ -15,7 +15,7 @@ if ( !fs.existsSync( logDir ) ) {
     fs.mkdirSync( logDir );
 }
 
-const logger = winston.createLogger({
+export const logger = winston.createLogger({
   level: 'debug',
   //format: winston.format.json(),
   format: combine(
@@ -46,6 +46,10 @@ if (process.env.NODE_ENV !== 'production') {
           myFormat
       ),
   }));
+}
+
+export const addTransport = (transport) => {
+    logger.add(transport)
 }
 
 class Logger{

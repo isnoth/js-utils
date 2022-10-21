@@ -15,7 +15,7 @@ export function downFile(content, filename) {
 	document.body.removeChild(eleLink);
 };
 
-export function waitUntilElementExist(selectors, xpaths=[], timeout=10000){
+export function waitUntilElementExist(selectors, xpaths=[], timeout=10000, checkInterval: number = 1000){
 	return new Promise((res, rej) => {
 		let timer;
 		let timeoutTimer;
@@ -41,7 +41,7 @@ export function waitUntilElementExist(selectors, xpaths=[], timeout=10000){
                 timeoutTimer = null
                 resolve(findEl)
             }
-		}, 1000)
+		}, checkInterval)
 	})
 }
 
@@ -129,7 +129,7 @@ export function getUidFromLocalStorage() {
     }
 }
 
-export function getCanvas({w=121, h=14, ratio=1, canvasEl, text, x, y, fillStyle}) {
+export function getCanvas({w=121, h=14, ratio=1, canvasEl, text, x=0, y=14, fillStyle=null}) {
     // const ratio = 2
     // console.log(this.canvasRef.current)
     canvasEl.width = w * ratio; // 实际渲染像素
