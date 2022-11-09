@@ -35,7 +35,8 @@
     "p-throttle": "^3.1.0",
     "tunnel": "0.0.6",
     "typescript": "^3.9.5",
-    "winston": "^3.1.0"
+    "winston": "^3.1.0",
+    "winston-daily-rotate-file": "^4.7.1"
   },
   "deprecated": false,
   "description": "",
@@ -52,7 +53,7 @@
     "generate-dts": "tsc src/index.ts -d --declarationDir dist/types",
     "build": "rollup -c rollup.config.js"
   },
-  "version": "1.2.13",
+  "version": "1.2.14",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
