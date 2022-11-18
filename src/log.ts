@@ -19,7 +19,7 @@ if ( !fs.existsSync( logDir ) ) {
 const transport2 = new winston.transports.DailyRotateFile({
     level: 'debug',
     filename: path.join(logDir, '/application-%DATE%.log'),
-    datePattern: 'YYYY-MM-DD-HH',
+    datePattern: 'YYYY-MM-DD',
     zippedArchive: true,
     maxSize: '20m',
     maxFiles: '30d'
