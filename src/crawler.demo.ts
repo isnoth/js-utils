@@ -78,7 +78,6 @@ async function withProxy() {
 
     const ar = Array(100)
 
-
     const promises = Array(100)
     .fill(0)
     .map((i, index) => {
@@ -96,8 +95,9 @@ async function withProxy() {
     .then(console.log)
     .catch(e => console.log(e))
 
-    setInterval(() => {
-        console.log(ar)
+    setInterval(async () => {
+        const [running, done ] = await c.jobs()
+        console.log(`running: ${running}, done: ${done}`)
     }, 1000)
 
 }

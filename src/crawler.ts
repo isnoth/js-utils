@@ -44,4 +44,10 @@ export class Crawler {
         this.onDoneFn = fn
     }
 
+    jobs = async () => {
+        const done = await this.limiter.done()
+        const running = await this.limiter.running()
+        return [running, done]
+    }
+
 }
