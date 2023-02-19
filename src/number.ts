@@ -7,5 +7,5 @@ export const convertToCnNumber = (d) => {
         return `${Math.floor(d/10000)}万`
     }
 
-    return d.toString()
+    return Math.floor(d).toString()
 }

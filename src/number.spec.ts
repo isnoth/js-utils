@@ -4,6 +4,10 @@ it ('convertToNumber', () => {
     expect(convertToCnNumber(100)).toBe('100')
 })
 
+it ('convertToNumber', () => {
+    expect(convertToCnNumber(1.2231)).toBe('1')
+})
+
 it ('convertToNumber 万', () => {
     expect(convertToCnNumber(10000)).toBe('1万')
 })
