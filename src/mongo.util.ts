@@ -11,6 +11,7 @@ async function connectToMongo(url){
     const client = new MongoClient(url, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        poolSize: 20,
     });
 
     try {
